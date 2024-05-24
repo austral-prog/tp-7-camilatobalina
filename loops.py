@@ -1,50 +1,50 @@
-def index_of_by_index(word, list, index):
-    for i in range(len(list)):
-        if i>=index:
-            if list[i]==word:
-                return i
-    new_list=list[index:]
-    if word not in new_list:
-        return -1    
+def index_of_by_index(word, my_list, start_index):
+    if word not in my_list[start_index:]:
+        return -1
+    
+    for i, e in enumerate(my_list[start_index:], start=start_index):
+        if word == e:
+            return i
+    return -1
+
 
 
 def index_of_empty(list):
-    for i in range(len(list)):
-        a=0
-        if list[i]=="" and a<1:
-            a+=1
-            return i
-    if "" not in list:
-        return -1
+    if not "" in list: return -1
+    for i, e in enumerate(list):
+        if e == "":
+            break
+    return i
 
 
-def index_of(word, list):
-    for i in range(len(list)):
-        if list[i]==word:
-            return i
-    if word not in list:
+def index_of(word, my_list):
+    if word not in my_list:
         return -1
+    for i, e in enumerate(my_list):
+        if e == word:
+            return i
+    return -1
+
+#colors = ["Red", "Green", "White", "Black", "Pink", "Yellow", "Black"]
+
+
+def put(word, my_list):
+    if "" not in my_list:
+        return -1
+    for i, e in enumerate(my_list):
+        if e == "":
+            my_list[i] = word
+            return i
+    return -1
     
 
 
-def put(word, list):
-    for i in range(len(list)):
-        a=0
-        if list[i]=="" and a<1:
-            list[i]=word
-            a+=1
-            return i
-    if "" not in list:
-        return -1
-    
-
-def remove(word, list):
-    if word in list:
-        a=0
-        for i in range(len(list)):
-            if list[i]==word:
-                list[i]=""
-                a+=1
-        return a
-    else:
+def remove(word, my_list):
+    if word not in my_list:
         return 0
+    count = 0
+    for i, e in enumerate(my_list):
+        if e == word:
+            my_list[i] = ""
+            count += 1
+    return count
